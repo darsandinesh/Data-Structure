@@ -1,3 +1,4 @@
+// to create a new node in the linked list 
 class Node {
     constructor(value) {
         this.value = value
@@ -5,20 +6,42 @@ class Node {
     }
 }
 
+// to modifiy the linked list 
 class linkedList {
     constructor() {
         this.head = null
         this.size = 0
     }
 
+    // to check if the linked list is empty or not
     isEmpty() {
         return this.size === 0
     }
 
+    // to get the size of the linked list 
     getSize() {
         return this.size
     }
 
+    insert(value, index) {
+        if (index < 0 || index > this.size) {
+            return
+        }
+        if (index === 0) {
+            this.prepend(value)
+        } else {
+            let node = new Node(value)
+            let current = this.head
+            for (let i = 0; i < index - 1; i++) {
+                current = current.next
+            }
+            node.next = current.next
+            current.next = node
+        }
+    }
+
+
+    // add a new node at the begining of the linked list
     prepend(value) {
         const node = new Node(value)
         if (this.isEmpty()) {
@@ -30,6 +53,7 @@ class linkedList {
         this.size++
     }
 
+    // add a new node at the end of the linked list
     append(value) {
         const node = new Node(value)
         if (this.isEmpty()) {
@@ -44,6 +68,7 @@ class linkedList {
         this.size++
     }
 
+    // used to print the elements in the linked list 
     print() {
         if (this.isEmpty()) {
             console.log('Linked list is empty!!!')
@@ -59,6 +84,7 @@ class linkedList {
     }
 }
 
+// to create a new instant of the linkedlist 
 const list = new linkedList()
 console.log(list.isEmpty())
 console.log(list.getSize())
