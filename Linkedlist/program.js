@@ -74,9 +74,9 @@ class linkedList {
             console.log('Linked list is empty!!!')
         } else {
             let current = this.head
-            let listValues = ''
+            let listValues = []
             while (current) {
-                listValues += `${current.value}`
+                listValues.push(current.value)
                 current = current.next
             }
             console.log(listValues)
