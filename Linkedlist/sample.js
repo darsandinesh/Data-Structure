@@ -15,56 +15,64 @@ class linkedList {
         return this.size === 0
     }
 
-    getSize() {
-        return this.size
-    }
-
-    prepend(value) {
-        const node = new Node(value)
-        if (this.isEmpty()) {
-            this.head = node
-        } else {
-            node.next = this.head
-            this.head = node
-        }
-        this.size++
-    }
-
     append(value) {
         const node = new Node(value)
         if (this.isEmpty()) {
             this.head = node
+            this.size++
         } else {
             let current = this.head
             while (current.next) {
                 current = current.next
             }
             current.next = node
+            this.size++
         }
-        this.size++
     }
 
     print() {
         if (this.isEmpty()) {
-            console.log('Linked list is empty!!!')
+            console.log('linked list is empty!!!')
         } else {
             let current = this.head
-            let listValues = []
             while (current) {
-                listValues.push(current.value)
+                console.log(current.value)
                 current = current.next
             }
-            console.log(listValues)
         }
     }
+
+    insert(value, index) {
+        if (index < 0 || index > this.size) {
+            console.log('Invalid index');
+            return;
+        }
+    
+        const node = new Node(value);
+    
+        if (index === 0) {
+            node.next = this.head;
+            this.head = node;
+        } else {
+            let i = 0;
+            let current = this.head;
+            while (i < index - 1) {
+                i++;
+                current = current.next;
+            }
+            node.next = current.next;
+            current.next = node;
+        }
+    
+        this.size++;
+    }
+    
+
 }
 
 const list = new linkedList()
-console.log(list.isEmpty())
-console.log(list.getSize())
 list.append(10)
 list.append(20)
-list.append(30)
 list.append(40)
-list.append(50)
+list.insert(30,3)
 list.print()

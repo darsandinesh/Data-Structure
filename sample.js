@@ -15,10 +15,6 @@ class linkedList {
         return this.size === 0
     }
 
-    getSize() {
-        return this.size
-    }
-
     prepend(value) {
         const node = new Node(value)
         if (this.isEmpty()) {
@@ -44,27 +40,50 @@ class linkedList {
         this.size++
     }
 
+    insertBefore(value, data) {
+        const node = new Node(value)
+        if (this.isEmpty()) {
+            this.head = node
+        } else {
+            if (this.head.value === data) {
+                node.next = this.head
+                this.head = node
+            } else {
+                let current = this.head
+                while (current.next) {
+                    if (current.next.value === data) {
+                        node.next = current.next
+                        current.next = node
+                        break;
+                    }
+                    current = current.next
+                }
+            }
+        }
+        this.size++
+    }
+
     print() {
         if (this.isEmpty()) {
-            console.log('Linked list is empty!!!')
+            console.log('linked list is empty')
         } else {
+            let arr = []
             let current = this.head
-            let listValues = []
             while (current) {
-                listValues.push(current.value)
+                arr.push(current.value)
                 current = current.next
             }
-            console.log(listValues)
+            console.log(arr)
         }
     }
 }
 
 const list = new linkedList()
-console.log(list.isEmpty())
-console.log(list.getSize())
-list.append(10)
-list.append(20)
-list.append(30)
-list.append(40)
-list.append(50)
+list.prepend(10)
+list.prepend(20)
+list.append(100)
+list.append(120)
+list.append(123)
+list.insertBefore(111, 10)
 list.print()
+
