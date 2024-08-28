@@ -10,6 +10,7 @@ for(let i=0;i<arr.length;i++){
     }
 }
 
+
 // add elements at the end of the array , element :10
 arr.push(10)
 console.log(arr)

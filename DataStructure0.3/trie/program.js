@@ -56,7 +56,7 @@ class Trie {
     }
 }
 
-const suffixTrie = new SuffixTrie();
+const suffixTrie = new Trie();
 suffixTrie.insert("apple");
 console.log(suffixTrie.search("elppa"));      // Output: true
 console.log(suffixTrie.endsWith("elp")); // Output: true
