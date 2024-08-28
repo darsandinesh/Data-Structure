@@ -1,4 +1,4 @@
-class minHeap {
+class maxHeap {
     constructor() {
         this.arr = [];
         this.size = 0;
@@ -53,7 +53,7 @@ class minHeap {
     }
 
     heapifyUp(index) {
-        if (this.hasParent(index) && this.parent(index) > this.arr[index]) {
+        if (this.hasParent(index) && this.parent(index) < this.arr[index]) {
             this.swap(this.getParentIndex(index), index);
             this.heapifyUp(this.getParentIndex(index));
         }
@@ -74,7 +74,7 @@ class minHeap {
     heapifyDown(index) {
         while (this.hasLeftChild(index)) {
             let smallestChildIndex = this.getLeftChild(index);
-            if (this.hasRightChild(index) && this.rightChild(index) < this.leftChild(index)) {
+            if (this.hasRightChild(index) && this.rightChild(index) > this.leftChild(index)) {
                 smallestChildIndex = this.getRightChild(index);
             }
             if (this.arr[index] < this.arr[smallestChildIndex]) {
@@ -94,7 +94,7 @@ class minHeap {
     }
 }
 
-const h = new minHeap();
+const h = new maxHeap();
 h.insert(10);
 h.insert(50);
 h.insert(20);
